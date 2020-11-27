@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
@@ -24,4 +25,32 @@ const mapDispatchToProps = (dispatch) => {
 
 const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
+=======
+import React from 'react';
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
+import MyPosts from "./MyPosts";
+import {connect} from "react-redux";
+
+const mapStateToProps = (state) => {
+    return {
+        posts: state.profilePage.posts,
+        //newPostText: state.profilePage.newPostText
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateNewPostText: (text) => {
+            let action = updateNewPostTextActionCreator(text);
+            dispatch(action);
+        },
+        addPost: () => {
+            dispatch(addPostActionCreator());
+        }
+    }
+}
+
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+
+>>>>>>> parent of bd3d020... 48: full copy for dialogs-reducer
 export default MyPostsContainer;
